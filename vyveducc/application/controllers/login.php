@@ -13,6 +13,7 @@ class Login extends CI_Controller
 	function index()
 	{
 		$this->load->helper('form');
+		$data['accion'] = base_url('index.php/login/validar');
 		$data['Mensaje'] = '';	
 		$this->load->view('login', $data);
 	}
@@ -21,42 +22,31 @@ class Login extends CI_Controller
 	{
 		if($this->session->userdata('ID_USUARIO'))
 		{
-			$data['cuerpo'] = 'index/index';
+			$data['cuerpo'] = 'inicio/index';
         	$data['username']= $this->session->userdata('NOMBRE_USUARIO');   
 			$this->load->view('header', $data);
 		}else {
 			redirect(site_url());
-		}
-		//$data['cuerpo'] = 'index/index';
-        //$data['username']= $this->session->userdata('ID_USUARIO');   
-		//$this->load->view('header', $data);
-				
+		}				
 	}
 
-	function iniciosesion()
+	function validar()
 	{	 
-		/*
-		$this->load->model('login_model');
-		$this->load->helper('form');
-		$data['Mensaje'] = json_decode(json_encode($this->login_model->log($_POST['username_v'], $_POST['password_v'])), True);
-		$this->load->view('login', $data);
-		*/
-		
 
 		if(isset($_POST['password_v'])){
 			$this->load->model('login_model');
 			if($this->login_model->log($_POST['username_v'], $_POST['password_v'])){
 				$user = json_decode(json_encode($this->login_model->log($_POST['username_v'], $_POST['password_v'])), True);
 				$this->session->set_userdata($user);
-				$data['cuerpo'] = 'index/index';
+				$data['cuerpo'] = 'inicio/index';
         		$data['username']= $this->session->userdata('NOMBRE_USUARIO');   
 				$this->load->view('header', $data);
 				
 			}else{
 				$this->load->helper('form');
-				$data['Mensaje'] = 'Ususario o contrasena incorrecto';
+				$data['Mensaje'] = 'Usuario o Contrasena incorreta';	
+				$data['accion'] = base_url('index.php/login/validar');
 				$this->load->view('login', $data);
-				
 			}
 		}
 		
@@ -67,7 +57,7 @@ class Login extends CI_Controller
 		{
 			$this->session->sess_destroy();
 			//echo 'hola';
-			redirect();
+			redirect('login');
 		}
 
 

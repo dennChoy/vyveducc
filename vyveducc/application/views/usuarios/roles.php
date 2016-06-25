@@ -56,7 +56,7 @@
 
         ?>
 
-        <?= form_open(base_url().'usuarios/guardaRol/'.$id); 
+        <?= form_open(base_url().'index.php/usuarios/guardaRol/'.$id); 
                 echo $encabezado;
                 ?>
 

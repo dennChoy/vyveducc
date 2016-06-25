@@ -24,6 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/vyveducc';
+//$config['base_url'] = 'http://vyveducc.hol.es/';
+//$config['base_url'] = 'http://192.168.1.4/vyveducc';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +38,7 @@ $config['base_url'] = 'http://localhost/vyveducc';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'login';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

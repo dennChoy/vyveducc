@@ -3,14 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tipo_personas extends CI_Controller 
 {
-	function _construct()
+	public function __construct() 
 	{
-		parent::_construct();
-
+		parent::__construct();
+		if (! $this->session->userdata('NOMBRE_USUARIO')) 
+		{
+			 redirect('login');
+		}     
 	}
 
 	function index()
 	{
+	if ( ! $this->session->userdata('NOMBRE_USUARIO'))
+	{
+       redirect('login');
+	}else{ 
 		$this->load->helper('form');
 		$this->datos['username']= $this->session->userdata('NOMBRE_USUARIO');   
 		$this->load->model('tipopersonas_model');
@@ -26,7 +33,7 @@ class Tipo_personas extends CI_Controller
 		$this->datos['cuerpo'] = 'tipo_personas/index_tipo_personas';
 		$this->load->view('header', $this->datos);
 		//$this->load->view('tipo_personas/index_tipo_personas', $data);
-	
+	}
 	}
 
 	function agregarnuevo()
@@ -47,7 +54,7 @@ class Tipo_personas extends CI_Controller
 			);
 		$this->load->model('tipopersonas_model');
 		$this->tipopersonas_model->insertaDato($data);
-		redirect(base_url('tipo_personas'));
+		redirect(base_url('index.php/tipo_personas'));
 
 	}
 
@@ -67,12 +74,6 @@ class Tipo_personas extends CI_Controller
 
 	function editartipopersona()
 	{
-	/*nombre IGUAL en la base de datos => nombre IGUAL de la vista
-		Si el nombre que esta aqui no es el mismo en la base de datos 
-		devovlera un error y mostrara el query que se esta mostrando,
-		Si el nombre que viene del input esta mal, y el nombre de la base de datos
-		esta bien se insertara o actualizara como NULL		
-			*/
 		$data = array(
 			'NOMBRE_FUNCION' => $this->input->post('NOMBRE_FUNCION'), 
 			'DESCRIPCION_FUNCION'=> $this->input->post('DESCRIPCION_FUNCION'),
@@ -82,7 +83,7 @@ class Tipo_personas extends CI_Controller
 		$this->load->model('tipopersonas_model');
 		$id = $this->uri->segment(3);
 		$this->tipopersonas_model->actualizarDato($id,$data);
-		redirect(base_url('tipo_personas'));
+		redirect(base_url('index.php/tipo_personas'));
 
 	}
 
@@ -91,7 +92,7 @@ class Tipo_personas extends CI_Controller
     	$this->load->model('tipopersonas_model');
     	$id = $this->uri->segment(3);
     	$this->tipopersonas_model->eliminar($id);
-    	redirect(base_url('tipo_personas'));
+    	redirect(base_url('index.php/tipo_personas'));
     }
 
 

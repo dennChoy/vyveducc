@@ -69,7 +69,7 @@
 
         ?>
 
-        <?= form_open(base_url().'usuarios/guardarusuario/'.$id); 
+        <?= form_open(base_url().'index.php/usuarios/guardarusuario/'.$id); 
                 echo $encabezado;
                 ?>
 

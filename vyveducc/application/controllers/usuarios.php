@@ -3,17 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuarios extends CI_Controller 
 {
-	function _construct()
+	public function __construct() 
 	{
-		parent::_construct();
-		
-
+		parent::__construct();
+		if (! $this->session->userdata('NOMBRE_USUARIO')) 
+		{
+			 redirect('login');
+		}     
 	}
 
 	function index()
 	{
 		if($this->session->userdata('ROL_USUARIO') != 1){
-			redirect('home');
+			redirect('login/home');
 		}
 		$this->load->helper('form');
 		$datos['username']= $this->session->userdata('NOMBRE_USUARIO');   
@@ -76,7 +78,7 @@ class Usuarios extends CI_Controller
 			$this->usuarios_model->insertaUsuario($data);
 		}
 		
-		redirect(base_url('usuarios'));
+		redirect(base_url('index.php/usuarios'));
 	}
 	function roles($id='')
 	{
@@ -116,14 +118,14 @@ class Usuarios extends CI_Controller
 			$this->usuarios_model->insertaRol($data);
 		}
 		
-		redirect(base_url('usuarios'));
+		redirect(base_url('index.php/usuarios'));
 	}
 	function eliminarUsuario()
     {
     	$this->load->model('usuarios_model');
     	$id = $this->uri->segment(3);
     	$this->usuarios_model->eliminaUsuario($id);
-    	redirect(base_url('usuarios'));
+    	redirect(base_url('index.php/usuarios'));
     }
 
     function eliminarRol()
@@ -131,7 +133,7 @@ class Usuarios extends CI_Controller
     	$this->load->model('usuarios_model');
     	$id = $this->uri->segment(3);
     	$this->usuarios_model->eliminaRol($id);
-    	redirect(base_url('usuarios'));
+    	redirect(base_url('index.php/usuarios'));
     }
 }
 ?>

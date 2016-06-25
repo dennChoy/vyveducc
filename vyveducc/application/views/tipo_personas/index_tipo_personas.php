@@ -56,7 +56,7 @@
                                     <tr> 
                                         <td><?php echo $funcion->ID_FUNCION; ?></td>
                                         <td>
-                                        <a href=<?= base_url().'tipo_personas/editar/'.$funcion->ID_FUNCION ?> >
+                                        <a href=<?= base_url().'index.php/tipo_personas/editar/'.$funcion->ID_FUNCION ?> >
                                         <?php echo $funcion->NOMBRE_FUNCION; ?>
                                         </a></td>
                                         <td><?php echo $funcion->DESCRIPCION_FUNCION; ?></td>
@@ -85,7 +85,7 @@
 
         <div id="menu2" class="tab-pane fade">
           <h3>Ingrese los siguientes datos</h3>
-             <?= form_open(base_url().'tipo_personas/guardartipopersona/');
+             <?= form_open(base_url().'index.php/tipo_personas/guardartipopersona/');
                     $tipo_persona = array(
                             'name' => 'tipo_nuevo',
                             'placeholder' => 'Escriba la nueva funcion que desea ingresar',
@@ -135,7 +135,7 @@
 
 
         <div id="menu3" class="tab-pane fade">
-             <?= form_open(base_url().'tipo_personas/editartipopersona/'.$id); 
+             <?= form_open(base_url().'index.php/tipo_personas/editartipopersona/'.$id); 
                   echo $encabezado;                                       
                     $tipo_persona = array(
                             'value' => $tipo,
@@ -178,7 +178,7 @@
 
                 <div id='botones' align="center">
                         <?php echo form_submit($boton) ?>   
-                        <a href=<?= base_url().'tipo_personas/eliminar/'.$id?> class="btn btn-danger" role="button">Eliminar Registros
+                        <a href=<?= base_url().'index.php/tipo_personas/eliminar/'.$id?> class="btn btn-danger" role="button">Eliminar Registros
                         </a>           
                 </div>
                 <?= form_close() ?>

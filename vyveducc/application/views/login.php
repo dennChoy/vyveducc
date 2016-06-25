@@ -1,50 +1,30 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <title>Iglesia La Verdad y La Vida</title>
-	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>Public/estilo/login.css">
-</head>
-<body>
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>vyveducc</title>
+    <link rel="stylesheet" href="<?= base_url() ?>public/estilo/login/normalize.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/estilo/login/style.css">
+    
+    <script src="js/prefixfree.min.js"></script>
 
-<!--
-    you can substitue the span of reauth email for a input with the email and
-    include the remember me checkbox
-    -->
-    <div class="container">
-        <div class="card card-container">
-            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
-            <img id="profile-img" class="profile-img-card" src="<?= base_url() ?>Public/images/VYV.png"/> 
-            <p id="profile-name" class="profile-name-card"></p>
+    
+  </head>
 
-            <div id="mensaje" align="center">
-           
-             <font size="4" color="red" ><?php print_r($Mensaje); ?></font>
-        
-            </div>
+  <body>
 
-            <div class="form-signin">
-	            <?= form_open(base_url().'login/iniciosesion'); ?>
-	                <span id="reauth-email" class="reauth-email"></span>
-	                <input type="text" id="inputEmail" class="form-control" placeholder="Nombre de usuario" name="username_v" required autofocus>
-	                <input type="password" id="inputPassword" class="form-control" placeholder="Contrasena" name="password_v"required>
-	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Ingresar</button>
-	            <?= form_close() ?>
-	        </div>
-
-            <a href="#" class="forgot-password">
-              Olvido la contrasena?
-            </a>
-            	<div = "footerinfo">
-            		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. 
-            		<?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>'
-            		 . CI_VERSION . '</strong>' : '' ?></p>
-            	</div>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
-
-
-</body>
+    <div class="login">
+    	<h1>Login</h1>
+      <div id="mensaje" align="center">
+        <font size="5" color="red" align="center" ><?php echo $Mensaje; ?></font>
+      </div>
+      <form class="form-horizontal" action="<?= $accion ?>" method="POST" id="formClienteCrear">
+        	  <input type="text" name="username_v" placeholder="Usuario" required="required" />
+            <input type="password" name="password_v" placeholder="Contraseña" required="required" />
+            <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar.</button>
+      </form>
+    </div>
+    
+        <script src="js/index.js"></script>    
+  </body>
 </html>

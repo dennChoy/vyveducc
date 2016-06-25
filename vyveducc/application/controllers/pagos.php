@@ -13,7 +13,7 @@ class Pagos extends CI_Controller
 	{
 		$this->load->helper('form');
 		$this->load->view('header');
-		$this->load->view('control_pagos/index_pagos');
+		$this->load->view('pagos/index_pagos');
 	}
 
 

@@ -14,7 +14,7 @@
    <div class="tab-content">
         <div id="menu1" class="tab-pane fade in active">
             <br>
-            <a href="<?= base_url('usuarios/gestion') ?>" class="btn btn-success" role="button">Agregar Nuevo Usuario</a>
+            <a href="<?= base_url('index.php/usuarios/gestion') ?>" class="btn btn-success" role="button">Agregar Nuevo Usuario</a>
             <br>
             <h3>USUARIOS DEL SISTEMA </h3>  
 
@@ -37,7 +37,7 @@
                                     <tr> 
                                         <td><?php echo $usuario->ID_USUARIO; ?></td>
                                         <td>
-                                            <a href="<?= base_url('usuarios/gestion/'
+                                            <a href="<?= base_url('index.php/usuarios/gestion/'
                                              .$usuario->ID_USUARIO.'') ?>" >
                                             <?php echo $usuario->NOMBRE_USUARIO; ?>
                                         </a>
@@ -61,7 +61,7 @@
             <div id="ROL" class="tab-pane fade">
 
             <br>
-            <a href="<?= base_url('usuarios/roles') ?>" class="btn btn-success" role="button">Agregar Nuevo Rol de Usuario</a>
+            <a href="<?= base_url('index.php/usuarios/roles') ?>" class="btn btn-success" role="button">Agregar Nuevo Rol de Usuario</a>
             <br>
 
             <h3>ROLES DE USUARIOS</h3>  
@@ -82,7 +82,7 @@
                                     <tr> 
                                         <td><?php echo $roll->ID_TIPO_USUARIO; ?></td>
                                         <td>
-                                            <a href="<?= base_url('usuarios/roles/'
+                                            <a href="<?= base_url('index.php/usuarios/roles/'
                                              .$roll->ID_TIPO_USUARIO.'') ?>" >
                                             <?php echo $roll->NOMBRE_TIPO; ?> </a>
                                         </td>
